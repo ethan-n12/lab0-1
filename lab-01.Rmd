@@ -142,6 +142,7 @@ _How many regions have more than 50 tourist attraction in the data set? (Hint: Y
 visitors %>% 
   count(region) %>%
   filter(n>50)
+```
 
 
 
@@ -167,8 +168,8 @@ _Perform the same calculation for the 2021 admissions data._
 ```{r Ex_h}
 visitors %>% 
   summarise(
-    mean_2021 = mean(n_2021),
-    med_2021 = mean(n_2021)
+    mean_2021 = mean(n_2021, na.rm = TRUE),
+    med_2021 = median(n_2021, na.rm = TRUE)
   )
 ```
 
@@ -179,7 +180,7 @@ All values in the output are `NA`!
 _What does `NA` stand for and why are you getting this as your answer to the previous question._
 
 **Write your answer here**
-
+NA stands for not available, meaning a cell where no data has been recorded. Functions like mean and median can't calculate a result when some of the values are missing, because R has no way of knowing what the missing values would have been. 
 
 
 
@@ -188,7 +189,7 @@ _What does `NA` stand for and why are you getting this as your answer to the pre
 _Look at the help pages for the `mean()` and `median()` commands to see what the input argument `na.rm` does. Edit your code from exercise h so that it computes the summary statistics where data is available._
 
 **Write your answer here**
-
+when na.rm = true then the NA values are no longer included in the data set so the mean and median are calculated from the available data. 
 
 
 
@@ -209,18 +210,18 @@ visitors %>%
 
 _Observe in question 6 that the mean statistics across all settings are much larger than the corresponding median statistics. Discuss in your group what this suggests about the data._
 
-**Write your answer here**
+The mean is much larger than the median because most attrcations don't recieve loads of visitors but some popular attractions have huge numbers of visitors. These pull the mean up while the median stays near the middle. 
 
 ## Question 8
 
 ### Exercise l.
 
 ```{r Q8}
-#visitors %>% 
-#  summarise(
-#     __________,
-#     __________,
-#  )
+visitors %>% 
+summarise(
+    max_2021 = max(n_2021, na.rm = TRUE),
+    min_2021 = min(n_2021, na.rm = TRUE)
+  )
 ```
 
 ## Question 9
