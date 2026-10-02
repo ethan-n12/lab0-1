@@ -152,7 +152,6 @@ visitors %>%
 ## Question 6
 
 #_What are the mean and median visitor numbers in 2022 across all attractions?_
-
 ```{r Q6}
 visitors %>% 
   summarise(
